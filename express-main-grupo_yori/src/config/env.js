@@ -13,8 +13,13 @@ if (missing.length > 0) {
 
 const nodeEnv = process.env.NODE_ENV ?? "development";
 
+// Render a veces guarda el valor con espacios o saltos de línea al pegarlo
+process.env.JWT_SECRET = process.env.JWT_SECRET.trim();
 if (nodeEnv === "production" && process.env.JWT_SECRET.length < 32) {
-    throw new Error("JWT_SECRET debe tener al menos 32 caracteres en producción");
+    throw new Error(
+        `JWT_SECRET debe tener al menos 32 caracteres en producción (recibidos: ${process.env.JWT_SECRET.length}). ` +
+            "Revise la variable en Render → Environment y vuelva a desplegar.",
+    );
 }
 
 // "lax" cuando el frontend llama a la API por el proxy de Vercel (mismo sitio, recomendado).
