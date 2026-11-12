@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Usuarios que inician sesión en el sistema (administradores, vigilantes)
+model Rol {
+  id       String    @id @default(uuid(7))
+  name     String    @unique
+
+  usuarios Usuario[]
+}
+
+model Usuario {
+  id          String     @id @default(uuid(7))
+  nombre      String
+  email       String     @unique
+  contrasena  String
+  id_rol      String
+
+  rol         Rol        @relation(fields: [id_rol], references: [id])
+  registros   Registro[]
+}
+
+// Personal de la institución al que se le controla la asistencia
+model Personal {
+  id         String     @id @default(uuid(7))
+  nombre     String
+  documento  String     @unique
+  cargo      String
+  area       String?
+  activo     Boolean    @default(true)
+  creado_en  DateTime   @default(now())
+
+  registros  Registro[]
+}
+
+// Marca de ENTRADA o SALIDA de una persona del personal
+model Registro {
+  id           String    @id @default(uuid(7))
+  id_personal  String
+  id_usuario   String    // usuario que hizo la marca
+  tipo         String    // "ENTRADA" | "SALIDA"
+  fecha        DateTime  @default(now())
+
+  personal     Personal  @relation(fields: [id_personal], references: [id])
+  usuario      Usuario   @relation(fields: [id_usuario], references: [id])
+
+  @@index([id_personal, fecha])
+  @@index([fecha])
+}

@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.*
+!.env.example
+*.db
+*.db-journal
+/express-main-grupo_yori/src/generated/
+.vercel/
+.DS_Store
