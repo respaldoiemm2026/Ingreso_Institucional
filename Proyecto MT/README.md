@@ -11,7 +11,7 @@ HTML + CSS + JavaScript con ES modules, sin build.
 ## Despliegue en Vercel
 
 - Importar el repo con **Root Directory = `Proyecto MT`** (Framework: **Other**, sin build command; output = raíz).
-- En `vercel.json` cambiar `https://api-registro-montessori.onrender.com` por la URL real del servicio de Render.
+- En `vercel.json` cambiar `https://ingreso-institucional.onrender.com` por la URL real del servicio de Render.
 - El frontend llama a `/api/...` y Vercel lo reenvía a Render: la cookie de sesión queda en el mismo dominio.
 - `/` redirige a `src/page/inicio/inicio.html`.
 

@@ -1,7 +1,7 @@
 # Blueprint de Render (New > Blueprint). Las variables con sync: false se cargan a mano en el panel.
 services:
   - type: web
-    name: api-registro-montessori
+    name: ingreso-institucional
     runtime: node
     rootDir: express-main-grupo_yori
     plan: free

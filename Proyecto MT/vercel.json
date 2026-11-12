@@ -5,7 +5,7 @@
     { "source": "/", "destination": "/src/page/inicio/inicio.html", "permanent": false }
   ],
   "rewrites": [
-    { "source": "/api/:path*", "destination": "https://api-registro-montessori.onrender.com/:path*" }
+    { "source": "/api/:path*", "destination": "https://ingreso-institucional.onrender.com/:path*" }
   ],
   "headers": [
     {
